@@ -1,0 +1,16 @@
+{
+  "name": "ascensor",
+  "version": "1.0.0",
+  "description": "Algoritmo bajar del edificio",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "node build/index.js",
+    "tsc": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.3",
+    "typescript": "^3.8.3"
+  }
+}
