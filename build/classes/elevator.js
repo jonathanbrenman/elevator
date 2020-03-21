@@ -98,4 +98,4 @@ class Elevator {
     }
 }
 module.exports.Elevator = Elevator;
-//# sourceMappingURL=ascensor.js.map
+//# sourceMappingURL=elevator.js.map

@@ -1,7 +1,10 @@
 class Person {
 
-    constructor () {
-      
+    private name: string;
+
+    constructor (name: string) {
+       this.name = name;
+       console.log("Created person >", name);
     }
 
     public openDoor() {
@@ -29,4 +32,4 @@ class Person {
     }
 }
 
-module.exports.Elevator = Elevator
+module.exports = Person

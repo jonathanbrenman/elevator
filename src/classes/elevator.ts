@@ -114,4 +114,4 @@ class Elevator {
 
 }
 
-module.exports.Elevator = Elevator
+module.exports = Elevator
