@@ -1,9 +1,9 @@
 // Programa principal
-const ElevatorClass = require('./classes/ascensor');
-const PersonClass = require('./classes/person');
+const { Elevator } = require('./classes/elevator');
+const { Person } = require('./classes/person');
 var personFloor = 5; // La persona se encuentra en el piso 5
-var person = new PersonClass("pepe");
-var elevator = new ElevatorClass(10, 0, "ok");
+var person = new Person("pepe");
+var elevator = new Elevator(10, 0, "ok");
 console.log("Program Started.");
 person.openDoor();
 person.closeDoor();

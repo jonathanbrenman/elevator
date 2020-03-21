@@ -1,4 +1,4 @@
-class Person {
+export class Person {
 
     private name: string;
 
@@ -31,5 +31,3 @@ class Person {
         console.log("Go out");
     }
 }
-
-module.exports = Person

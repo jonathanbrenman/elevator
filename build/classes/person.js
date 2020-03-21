@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 class Person {
     constructor(name) {
         this.name = name;
@@ -22,5 +24,5 @@ class Person {
         console.log("Go out");
     }
 }
-module.exports.Person = Person;
+exports.Person = Person;
 //# sourceMappingURL=person.js.map

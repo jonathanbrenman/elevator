@@ -1,6 +1,6 @@
-const sleep = require('sleep');
+const { sleep } = require('sleep');
 
-class Elevator {
+export class Elevator {
 
     private quantityFloors: number;
     private currentFloor: number;
@@ -11,7 +11,7 @@ class Elevator {
       this.quantityFloors = quantityFloors;
       this.currentFloor   = initFloor;
       this.status         = status;
-      this.elevatorSpeed  = 10000; // Velocidad de movimiento entre pisos
+      this.elevatorSpeed  = 5; // Velocidad de movimiento entre pisos
     }
 
     /* Status management */
@@ -43,20 +43,20 @@ class Elevator {
 
     public moveElevatorOneFloor (elevetorNewPosition: number) {
       console.log("moveElevatorOneFloor to position", elevetorNewPosition);
-      // Muevo el ascensor con la velocidad seteada (10seg x piso)
+      // Muevo el ascensor con la velocidad seteada (5seg x piso)
       sleep(this.elevatorSpeed);
       this.setCurrentFloor(elevetorNewPosition);
     }
 
     /* Metodo para pedir el ascensor */
     public requestElevator (requestedFloor: number) {
-      console.log("requestElevator");
+      console.log("requestElevator to floor", requestedFloor);
       /* 
         Antes de arrancar el ascensor verifico que este ok 
         - el piso solicitado no puede ser mayor a la cantidad de pisos que tiene el edificio.
       */
-      if (this.getStatus() !== "ok" || this.quantityFloors > this.getCurrentFloor()) { 
-        return false 
+     if (this.getStatus() !== "ok" || requestedFloor > this.quantityFloors) { 
+       return false 
       }
       // Subo o bajo ascensor a piso solicitado, verificando que no cambie el estado
       while (this.getCurrentFloor() !== requestedFloor && this.getStatus() === "ok") {
@@ -65,17 +65,22 @@ class Elevator {
           console.log("elevator has arrived");
           return true;
         } else {
-          console.log("moving elevator...");
-          // si no se encuentra en el piso solicitado me fijo de subir o bajar de a un piso
           let currentFloor = this.getCurrentFloor();
+          // si no se encuentra en el piso solicitado me fijo de subir o bajar de a un piso
           if (requestedFloor > this.getCurrentFloor()){
             // si el piso que pidio el ascensor es mayor al que se encuentra subo un piso
-            this.moveElevatorOneFloor(currentFloor++);
+            currentFloor += 1;
+            this.moveElevatorOneFloor(currentFloor);
           } else {
             // si el piso que pidio el ascensor es mayor al que se encuentra bajo un piso
-            this.moveElevatorOneFloor(currentFloor--);
+            currentFloor -= 1;
+            this.moveElevatorOneFloor(currentFloor);
           }
         }
+      }
+
+      if (this.hasElevatorArrived(requestedFloor)) {
+        return true;
       }
 
       /* 
@@ -88,9 +93,6 @@ class Elevator {
     public downToPB () {
       console.log("getting down elevator");
       let pb: number = 0;
-      if (this.getStatus() !== "ok" || this.quantityFloors > this.getCurrentFloor()) { 
-        return false 
-      }
       while (this.getCurrentFloor() !== pb && this.getStatus() === "ok") {
         // si llego el ascensor retorno true
         if (this.hasElevatorArrived(pb)) {
@@ -102,10 +104,12 @@ class Elevator {
           let currentFloor = this.getCurrentFloor();
           if (pb > this.getCurrentFloor()){
             // si el piso que pidio el ascensor es mayor al que se encuentra subo un piso
-            this.moveElevatorOneFloor(currentFloor++);
+            currentFloor += 1;
+            this.moveElevatorOneFloor(currentFloor);
           } else {
             // si el piso que pidio el ascensor es mayor al que se encuentra bajo un piso
-            this.moveElevatorOneFloor(currentFloor--);
+            currentFloor -= 1;
+            this.moveElevatorOneFloor(currentFloor);
           }
         }
       }
@@ -113,5 +117,3 @@ class Elevator {
     }
 
 }
-
-module.exports = Elevator
