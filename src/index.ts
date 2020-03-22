@@ -24,11 +24,9 @@ var personFloor = 5; // La persona se encuentra en el piso 5
 var person      = new Person("pepe");
 var elevator    = new Elevator(10, 0, "ok");
 init(personFloor, person, elevator);
-console.log("----------------------- Finalizo caso 1 -----------------------");
 
 console.log("----------------------- Inicio caso 2 -----------------------");
 var personFloor = 3; // La persona se encuentra en el piso 3
 var person      = new Person("juaquin");
 var elevator    = new Elevator(10, 0, "fuera de servicio");
 init(personFloor, person, elevator);
-console.log("----------------------- Finalizo caso 2 -----------------------");
