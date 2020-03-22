@@ -3,7 +3,7 @@ const { Elevator } = require('./classes/elevator');
 const { Person }   = require('./classes/person');
 
 
-var init = (personFloor, person, elevator) => {
+var init = (personFloor: number, person: any, elevator: any) => {
     person.openDoor();
     person.closeDoor();
     person.walkToElevator();

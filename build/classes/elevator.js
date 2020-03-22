@@ -89,11 +89,13 @@ class Elevator {
                 let currentFloor = this.getCurrentFloor();
                 if (pb > this.getCurrentFloor()) {
                     // si el piso que pidio el ascensor es mayor al que se encuentra subo un piso
-                    this.moveElevatorOneFloor(currentFloor++);
+                    currentFloor += 1;
+                    this.moveElevatorOneFloor(currentFloor);
                 }
                 else {
                     // si el piso que pidio el ascensor es mayor al que se encuentra bajo un piso
-                    this.moveElevatorOneFloor(currentFloor--);
+                    currentFloor -= 1;
+                    this.moveElevatorOneFloor(currentFloor);
                 }
             }
         }
